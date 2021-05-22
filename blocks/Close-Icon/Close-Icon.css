@@ -1,0 +1,18 @@
+.Close-Icon {
+position: absolute;
+height: 40px;
+left: calc(50vw + 210px);
+top: calc(50vh - 205px);   
+background: #00000000;
+}
+
+@media screen and (max-width: 879px) {
+.Close-Icon {
+height: 26px;
+left: calc(50vw + 115px);
+top: calc(50vh - 140px);
+}
+}
+.Close-Icon:hover {
+opacity: 0.6;
+}

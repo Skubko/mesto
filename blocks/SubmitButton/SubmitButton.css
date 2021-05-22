@@ -1,0 +1,30 @@
+.SubmitButton {
+margin: 48px 0px 0px 36px;
+padding: 0;
+width: 358px;
+height: 50px;
+background: #000000;
+border-radius: 2px;
+font-family: 'Inter', Arial, sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+text-align: center;
+color: #FFFFFF;
+    }
+
+.SubmitButton:hover {
+background: rgba(0, 0, 0, 0.8);
+ }
+
+@media screen and (max-width: 879px) {
+.SubmitButton {
+margin: 45px 22px 0px 22px;
+padding: 0;
+width: 238px;
+height: 46px;
+font-size: 14px;
+line-height: 17px;
+}
+}
