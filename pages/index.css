@@ -10,12 +10,12 @@
 @import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__foto/profile__foto.css);
-@import url(../blocks/Profile-Info/Profile-Info.css);
+@import url(../blocks/profile-info/profile-info.css);
 @import url(../blocks/forma/forma.css);
 @import url(../blocks/forma/__name/forma__name.css);
 @import url(../blocks/forma/__profession/forma__profession.css);
-@import url(../blocks/Profile-Info/__EditButton/Profile-Info__EditButton.css);
-@import url(../blocks/profile/__Add-Button/profile__Add-Button.css);
+@import url(../blocks/profile-info/__edit-button/profile-info__edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__img/element__img.css);
@@ -30,5 +30,5 @@
 @import url(../blocks/input/input.css);
 @import url(../blocks/input/_textname/input_textname.css);
 @import url(../blocks/input/_textjob/input_textjob.css);
-@import url(../blocks/SubmitButton/SubmitButton.css);
-@import url(../blocks/Close-Icon/Close-Icon.css);
+@import url(../blocks/submit-button/submit-button.css);
+@import url(../blocks/close-icon/close-icon.css);

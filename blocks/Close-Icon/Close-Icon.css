@@ -1,4 +1,4 @@
-.Close-Icon {
+.close-icon {
 position: absolute;
 height: 40px;
 left: calc(50vw + 210px);
@@ -7,12 +7,12 @@ background: #00000000;
 }
 
 @media screen and (max-width: 879px) {
-.Close-Icon {
+.close-icon {
 height: 26px;
 left: calc(50vw + 115px);
 top: calc(50vh - 140px);
 }
 }
-.Close-Icon:hover {
+.close-icon:hover {
 opacity: 0.6;
 }

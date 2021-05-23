@@ -1,4 +1,4 @@
-.SubmitButton {
+.submit-button {
 margin: 48px 0px 0px 36px;
 padding: 0;
 width: 358px;
@@ -14,12 +14,12 @@ text-align: center;
 color: #FFFFFF;
     }
 
-.SubmitButton:hover {
+.submit-button:hover {
 background: rgba(0, 0, 0, 0.8);
  }
 
 @media screen and (max-width: 879px) {
-.SubmitButton {
+.submit-button {
 margin: 45px 22px 0px 22px;
 padding: 0;
 width: 238px;
