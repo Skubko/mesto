@@ -9,7 +9,7 @@
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__аvatar/profile__аvatar.css);
+@import url(../blocks/profile/__foto/profile__foto.css);
 @import url(../blocks/Profile-Info/Profile-Info.css);
 @import url(../blocks/forma/forma.css);
 @import url(../blocks/forma/__name/forma__name.css);
@@ -28,7 +28,7 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/edit-profile/edit-profile.css);
 @import url(../blocks/input/input.css);
-@import url(../blocks/input/__text-name/input__text-name.css);
-@import url(../blocks/input/__text-job/input__text-job.css);
+@import url(../blocks/input/__textname/input__textname.css);
+@import url(../blocks/input/__textjob/input__textjob.css);
 @import url(../blocks/SubmitButton/SubmitButton.css);
 @import url(../blocks/Close-Icon/Close-Icon.css);

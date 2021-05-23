@@ -1,8 +1,8 @@
-.input__text-name {
+.input__textname {
 margin: 41px 36px 0px 36px;
 }  
 @media screen and (max-width: 879px) {
-.input__text-name {
+.input__textname {
 margin: 75px 22px 0px 22px;
 }  
 }
