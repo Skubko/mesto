@@ -1,6 +1,6 @@
 let formElement = document.querySelector('.popup__container');
-let nameInput = formElement.querySelector ('.input__textname'); 
-let jobInput = formElement.querySelector ('.input__textjob');
+let nameInput = formElement.querySelector ('.input_textname'); 
+let jobInput = formElement.querySelector ('.input_textjob');
 let Firstname = document.querySelector ('.forma__name');
 let profession = document.querySelector ('.forma__profession');
 let popup = document.querySelector ('.popup');

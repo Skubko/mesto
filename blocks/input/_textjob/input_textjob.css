@@ -1,9 +1,9 @@
-.input__textjob {
+.input_textjob {
     margin: 17px 36px 0px 36px;
     }
 
     @media screen and (max-width: 879px) {
-.input__textjob {
+.input_textjob {
     margin: 30px 22px 0px 22px;
     }
     }
