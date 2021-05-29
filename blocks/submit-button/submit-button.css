@@ -1,7 +1,7 @@
 .submit-button {
-margin: 48px 0px 0px 36px;
+margin: 48px 36px 37px 36px;
 padding: 0;
-width: 358px;
+width: auto;
 height: 50px;
 background: #000000;
 border-radius: 2px;
@@ -11,7 +11,8 @@ font-weight: 400;
 font-size: 18px;
 line-height: 22px;
 text-align: center;
-color: #FFFFFF;
+color: #FFF;
+cursor: pointer;
     }
 
 .submit-button:hover {
@@ -20,9 +21,8 @@ background: rgba(0, 0, 0, 0.8);
 
 @media screen and (max-width: 879px) {
 .submit-button {
-margin: 45px 22px 0px 22px;
-padding: 0;
-width: 238px;
+margin: 45px 22px 25px 22px;
+width: auto;
 height: 46px;
 font-size: 14px;
 line-height: 17px;

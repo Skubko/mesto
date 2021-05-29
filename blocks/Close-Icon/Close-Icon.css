@@ -1,16 +1,23 @@
 .close-icon {
 position: absolute;
 height: 40px;
+width: 40px;
 left: calc(50vw + 210px);
-top: calc(50vh - 205px);
-background: #00000000;
+top: calc(50vh - 220px);
+background-image: url(../../images/Close-Icon.svg);
+background-color: black;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+border: none;
+cursor: pointer;
+z-index: 2;
 }
 
 @media screen and (max-width: 879px) {
 .close-icon {
 height: 26px;
-left: calc(50vw + 115px);
-top: calc(50vh - 140px);
+left: calc(50vw + 100px);
 }
 }
 .close-icon:hover {

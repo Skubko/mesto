@@ -14,8 +14,7 @@
   <div class="page">
  
     <header class="header">
-      <img src="images/vector.svg" alt="Mesto Russia" class="header__logo">
-      <div class="header__line"></div>
+      <img src="images/vector.svg" alt="Место Россия" class="header__logo">
     </header>
 
     <main class="main">
@@ -24,11 +23,11 @@
         <div class="profile-info">
           <div class="forma">
             <h1 class="forma__name">Жак-Ив Кусто</h1>
-            <h4 class="forma__profession">Исследователь океана</h4>
+            <p class="forma__profession">Исследователь океана</p>
           </div>
-          <img src="images/Edit-Button.svg" alt="кнопка редактирования" class="profile-info__edit-button">
+          <button type="button" alt="кнопка редактирования" class="profile-info__edit-button"></button>
         </div>
-        <img src="images/Add-Button.svg" alt="кнопка добавления" class="profile__add-button">        
+        <button type="button" alt="кнопка добавления" class="profile__add-button"></button>       
       </section>
 
 
@@ -36,61 +35,62 @@
         <article class="element">
           <img src="images/Карачаевск.jpg" alt="Карачаево-Черкессия" class="element__img">
           <div class="element__text">
-            <p class="element__name">Карачаево-Черкессия</p>
-            <img src="images/heart.svg" alt="сердце" class="element__heart"> 
+            <h2 class="element__name">Карачаево-Черкессия</h2>
+            <button type="button" alt="сердце" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/Эльбрус.jpg" alt="Гора Эльбрус" class="element__img">
           <div class="element__text">
-            <p class="element__name">Гора Эльбрус</p>
-            <img src="images/heart.svg" alt="сердце" class="element__heart"> 
+            <h2 class="element__name">Гора Эльбрус</h2>
+            <button type="button" alt="сердце" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/Домбай.jpg" alt="Домбай" class="element__img">
           <div class="element__text">
-            <p class="element__name">Домбай</p>
-            <img src="images/heart.svg" alt="сердце" class="element__heart"> 
+            <h2 class="element__name">Домбай</h2>
+            <button type="button" alt="сердце" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/китай.jpg" alt="Китай" class="element__img">
           <div class="element__text">
-            <p class="element__name">Китай</p>
-            <img src="images/heart.svg" alt="сердце" class="element__heart"> 
+            <h2 class="element__name">Китай</h2>
+            <button type="button" alt="сердце" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/рим.jpg" alt="Рим" class="element__img">
           <div class="element__text">
-            <p class="element__name">Рим</p>
-            <img src="images/heart.svg" alt="сердце" class="element__heart"> 
+            <h2 class="element__name">Рим</h2>
+            <button type="button" alt="сердце" class="element__heart"></button>
           </div>
         </article>
         <article class="element">
           <img src="images/африка.jpg" alt="Африка" class="element__img">
           <div class="element__text">
-            <p class="element__name">Африка</p>
-            <img src="images/heart.svg" alt="сердце" class="element__heart">
+            <h2 class="element__name">Африка</h2>
+            <button type="button" alt="сердце" class="element__heart"></button>
           </div>
         </article>
       </section>
     </main>
 
     <footer class="footer">
-      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+      <p class="footer__text">&copy; 2021 Mesto Russia</p>
     </footer>
  
     <div class="popup">
-      <div class="popup__overlay"></div>
       <div class="popup__container">
-        <h3 class="edit-profile">Редактировать профиль</h3>
-        <input type="text" placeholder="Жак-Ив Кусто" class="input input_textname">        
-        <input type="text" placeholder="Исследователь океана" class="input input_textjob">        
-        <button class="submit-button" type='submit'>Сохранить</button>
+        <h2 class="edit-profile">Редактировать профиль</h2>
+        <form class="popup__forma" action="#" name="forma">
+          <input name="name" type="text" class="popup__input">
+          <input name="job" type="text"  class="popup__input">
+          <button class="submit-button" type="submit" name="submit-button">Сохранить</button>
+        </form>
       </div>
-      <img src="images/Close-Icon.svg" alt="крестик для закрытия попапа" class="close-icon">
+      <button type="button" alt="крестик для закрытия попапа" class="close-icon"></button>
     </div>
 
   </div>
