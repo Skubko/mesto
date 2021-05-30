@@ -4,7 +4,7 @@ height: 40px;
 width: 40px;
 left: calc(50vw + 210px);
 top: calc(50vh - 220px);
-background-image: url(../../images/CloseIcon.svg);
+background-image: url(../../images/closeicon.svg);
 background-color: black;
 background-size: cover;
 background-repeat: no-repeat;
