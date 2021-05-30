@@ -10,8 +10,8 @@
     background-position: center;
     border: none;
     cursor: pointer;
-
 }
+
 .profile-info__edit-button:hover {
     opacity: 0.6;
 }

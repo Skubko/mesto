@@ -17,6 +17,7 @@ z-index: 2;
 @media screen and (max-width: 879px) {
 .close-icon {
 height: 26px;
+width: 26px;
 left: calc(50vw + 100px);
 }
 }

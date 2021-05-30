@@ -13,6 +13,7 @@ line-height: 22px;
 text-align: center;
 color: #FFF;
 cursor: pointer;
+border: none;
     }
 
 .submit-button:hover {
