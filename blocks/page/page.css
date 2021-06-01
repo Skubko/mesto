@@ -23,7 +23,7 @@
     }
     }
   
-    @media (min-width: 300px) and (max-width: 679px) {
+    @media (min-width: 320px) and (max-width: 679px) {
     .page {
       max-width: 679px;
     }

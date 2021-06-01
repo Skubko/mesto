@@ -6,7 +6,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 position: fixed;
-width: 98vw;
+width: 100vw;
 height:100vh;
 top: 0px;
 left: 0px;
@@ -14,11 +14,9 @@ left: 0px;
 
 .popup:before {
     position: fixed;
-    margin: 0;
-    padding: 0;
     content: "";
     display: block;
-    width: 98vw;
+    width: 100vw;
     height:100vh;
   background: #000000;
     opacity: 0.5;
