@@ -1,0 +1,5 @@
+.popup__picture {
+    opacity: 1;
+    transition: opacity 0.5s;
+    background-color: rgba(0,0,0,0.9);
+  }

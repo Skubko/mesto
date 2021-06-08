@@ -15,3 +15,8 @@ cursor: pointer;
 .element__heart:hover {
     opacity: 0.5;
     }
+
+    .element__heart_active {
+        background-image: url(../../../images/heart-activ.svg);
+          }
+        

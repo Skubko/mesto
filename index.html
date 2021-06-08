@@ -32,66 +32,56 @@
 
 
       <section class="elements">
-        <article class="element">
-          <img src="images/Карачаевск.jpg" alt="Карачаево-Черкессия" class="element__img">
-          <div class="element__text">
-            <h2 class="element__name">Карачаево-Черкессия</h2>
-            <button type="button" aria-label="сердце" class="element__heart"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img src="images/Эльбрус.jpg" alt="Гора Эльбрус" class="element__img">
-          <div class="element__text">
-            <h2 class="element__name">Гора Эльбрус</h2>
-            <button type="button" aria-label="сердце" class="element__heart"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img src="images/Домбай.jpg" alt="Домбай" class="element__img">
-          <div class="element__text">
-            <h2 class="element__name">Домбай</h2>
-            <button type="button" aria-label="сердце" class="element__heart"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img src="images/китай.jpg" alt="Китай" class="element__img">
-          <div class="element__text">
-            <h2 class="element__name">Китай</h2>
-            <button type="button" aria-label="сердце" class="element__heart"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img src="images/рим.jpg" alt="Рим" class="element__img">
-          <div class="element__text">
-            <h2 class="element__name">Рим</h2>
-            <button type="button" aria-label="сердце" class="element__heart"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img src="images/африка.jpg" alt="Африка" class="element__img">
-          <div class="element__text">
-            <h2 class="element__name">Африка</h2>
-            <button type="button" aria-label="сердце" class="element__heart"></button>
-          </div>
-        </article>
+        <template id="element-template">
+          <article class="element">
+            <img src="#" alt="#" class="element__img">
+            <button type="button" class="element__button-delete"></button>
+            <div class="element__text">
+              <h2 class="element__name"></h2>
+              <button type="button" aria-label="сердце" class="element__heart"></button>
+            </div>
+          </article>
+        </template>
       </section>
+
     </main>
 
     <footer class="footer">
       <p class="footer__text">&copy; 2021 Mesto Russia</p>
     </footer>
  
-    <div class="popup">
+    <div class="popup" id="popupProfile">
       <div class="popup__container">
+        <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
         <h2 class="edit-profile">Редактировать профиль</h2>
-        <form class="popup__forma" action="#" name="forma">
-          <input name="name" type="text" class="popup__input">
-          <input name="job" type="text"  class="popup__input">
-          <button class="submit-button" type="submit" name="submit-button">Сохранить</button>
+        <form class="popup__forma" action="#" name="forma" id="formaProfile">
+          <input name="name" type="text" placeholder="Имя" class="popup__input" required="">
+          <input name="job" type="text"  placeholder="Род деятельности" class="popup__input" required="">
+          <button class="submit-button" type="submit" aria-label="Сохранить профиль" name="submit-button">Сохранить</button>
         </form>
       </div>
-      <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
     </div>
+
+    <div class="popup" id="popupCard">
+      <div class="popup__container">
+        <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+        <h2 class="edit-profile">Новое место</h2>
+        <form class="popup__forma" action="#" name="forma" id="formaCard">
+          <input name="nameCard" type="text" placeholder="Название" class="popup__input" required="">
+          <input name="linkCard" type="text"  placeholder="Ссылка на картинку" class="popup__input" required="">
+          <button class="submit-button" type="submit" aria-label="Сохранить карточку" name="submit-button">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup__picture" id="popupPicture">
+      <figure class="popup__figure">
+        <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+        <img src="" alt="Увеличенная картинка" class="popup__image">
+        <figcaption class="popup__caption">Увеличенная картинка</figcaption>
+      </figure>
+    </div>
+    
 
   </div>
   <script src="pages/index.js"></script>

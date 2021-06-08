@@ -1,0 +1,8 @@
+.popup__image {
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+    max-width: 75vw;
+    max-height: 75vh;
+    transition: opacity 0.5s linear;
+    }
