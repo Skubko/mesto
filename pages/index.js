@@ -3,7 +3,6 @@ const profession = document.querySelector('.forma__profession');
 const editButton = document.querySelector('.profile-info__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
-
 const popupProfile = document.querySelector('#popupProfile');
 const formElementProfile = popupProfile.querySelector('.popup__container');
 const popupProfileForm = popupProfile.querySelector('#popupProfileForm');
@@ -28,12 +27,25 @@ const popupCaption = popupPicture.querySelector('.popup__caption');
 const closeIconPicture = popupPicture.querySelector('.close-icon');
 const popup = "";
 
+function closePopup(popup) { // обработчик закрытия попапа
+    popup.classList.toggle('popup_opened');
+}
+
+function addPopup(popup) { // обработчик открытия попапа
+    popup.classList.add('popup_opened'); //добавляем к popup класс popup_opened
+}
+
+function removePopup(popup) { // обработчик закрытия попапа по крестику
+    popup.classList.remove('popup_opened');
+}
+
 function formSubmitHandler(evt) { // обработчик закрытия редактора профиля
     evt.preventDefault();
     firstName.textContent = nameInput.value;
     profession.textContent = jobInput.value;
-    popupProfile.classList.toggle('popup_opened');
+    closePopup(popupProfile);
 }
+
 
 function formSubmitCard(evt) { // обработчик закрытия редактора карточки
     evt.preventDefault();
@@ -43,23 +55,23 @@ function formSubmitCard(evt) { // обработчик закрытия реда
     }
     const newCard = createNewCard(card);
     renderCard(newCard);
-    popupCard.classList.toggle('popup_opened');
+    closePopup(popupCard);
 }
 
 
 
 function popupEditProfileOpened() { // открытие попапа редактирования профайла
-    popupProfile.classList.add('popup_opened'); //добавляем к popup класс popup_opened
+    addPopup(popupProfile); //добавляем к popup класс popup_opened
     nameInput.value = firstName.textContent;
     jobInput.value = profession.textContent;
 }
 
 function popupAddCardOpened() { // открытие попапа редактирования карточки с новой картинкой
-    popupCard.classList.add('popup_opened'); //добавляем к popup класс popup_opened
+    addPopup(popupCard); //добавляем к popup класс popup_opened
 }
 
 function popupPictureOpen(name, link) { //Открываем попап с картинкой на весь экран
-    popupPicture.classList.add('popup_opened'); //добавляем к popup класс popup_opened
+    addPopup(popupPicture); //добавляем к popup класс popup_opened
     popupImage.src = link;
     popupImage.alt = name;
     popupCaption.textContent = name;
@@ -77,8 +89,8 @@ function createNewCard(card) { //Функция рендера отдельно�
     const cloneOfCard = elementTemplate.cloneNode(true); //Клонируем шаблон
     cloneOfCard.querySelector('.element__name').innerText = card.name; //Присваиваем имя карточки
     const cardImage = cloneOfCard.querySelector('.element__img'); //Записываем элемент фото карточки
-    cardImage.setAttribute('src', card.link); //Присваиваем ссылку на карточку
-    cardImage.setAttribute('alt', card.name); //Присваиваем атрибуту alt значение названия картинки
+    cardImage.src = card.link; //Присваиваем ссылку на карточку
+    cardImage.alt = card.name; //Присваиваем атрибуту alt значение названия картинки
     cloneOfCard.querySelector('.element__button-delete').addEventListener('click', handleDeleteCard); //Выбираем кнопку удалить карточку и сразу вешаем слушатель
     cloneOfCard.querySelector('.element__heart').addEventListener('click', handleLikeCard); //Выбираем кнопку сердечко и сразу вешаем слушатель
     cardImage.addEventListener('click', () => popupPictureOpen(card.name, card.link)); //Выбираем картинку и сразу вешаем слушатель
@@ -89,17 +101,15 @@ function renderCard(elem) { //Функция добавления карточк
     elements.prepend(elem);
 };
 
-
 initialCards.forEach((card) => { //Отрисовка  стандартных карточек
     const newCard = createNewCard(card);
     renderCard(newCard);
 });
 
-
 editButton.addEventListener('click', popupEditProfileOpened); //   вешаем слушатель на кнопку редактирования профайла
 addButton.addEventListener('click', popupAddCardOpened); //   вешаем слушатель на кнопку добавления новой карточки
-closeIconProfile.addEventListener('click', () => popupProfile.classList.remove('popup_opened')); //   вешаем слушатель на крестик закрытия попапа профайла
-closeIconCard.addEventListener('click', () => popupCard.classList.remove('popup_opened')); //   вешаем слушатель на крестик закрытия попапа новой карточки
-closeIconPicture.addEventListener('click', () => popupPicture.classList.remove('popup_opened')); //   вешаем слушатель на крестик закрытия попапа кардинки на весь экран
+closeIconProfile.addEventListener('click', () => removePopup(popupProfile)); //   вешаем слушатель на крестик закрытия попапа профайла
+closeIconCard.addEventListener('click', () => removePopup(popupCard)); //   вешаем слушатель на крестик закрытия попапа новой карточки
+closeIconPicture.addEventListener('click', () => removePopup(popupPicture)); //   вешаем слушатель на крестик закрытия попапа кардинки на весь экран
 popupProfileForm.addEventListener('submit', formSubmitHandler); //   вешаем слушатель на кнопку =Cохранить= редактирования профайла
 popupCardForm.addEventListener('submit', formSubmitCard); //   вешаем слушатель на кнопку =Создать= добавления новой карточки
