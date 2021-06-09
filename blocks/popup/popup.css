@@ -1,24 +1,26 @@
 .popup {
-margin: 0;
-padding: 0;
-display: none;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-position: fixed;
-width: 100vw;
-height:100vh;
-top: 0px;
-left: 0px;
-transition: opacity 0.5s linear;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 0.5s linear;
 }
 
 .popup:before {
     position: fixed;
     content: "";
-    display: block;
+    /*display: block;*/
     width: 100vw;
     height: 100vh;
-  background: #000000;
+    background: #000000;
     opacity: 0.5;
 }

@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Яндекс Практикум">
-  <meta name="keywords" content="Mesto">
-  <meta name="author" content="Андрей Скубко">
-  <link rel="stylesheet" href="pages/index.css">
-   <title>Место</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Яндекс Практикум">
+    <meta name="keywords" content="Mesto">
+    <meta name="author" content="Андрей Скубко">
+    <link rel="stylesheet" href="pages/index.css">
+    <title>Место</title>
 </head>
- <!--                         -->
+<!--                         -->
+
 <body class="root">
-  <div class="page">
- 
-    <header class="header">
-      <img src="images/vector.svg" alt="Место Россия" class="header__logo">
-    </header>
+    <div class="page">
 
-    <main class="main">
-      <section class="profile">
-        <img src="images/image.jpg" alt="Фото Жак-Ив Кусто" class="profile__foto">
-        <div class="profile-info">
-          <div class="forma">
-            <h1 class="forma__name">Жак-Ив Кусто</h1>
-            <p class="forma__profession">Исследователь океана</p>
-          </div>
-          <button type="button" aria-label="кнопка редактирования" class="profile-info__edit-button"></button>
-        </div>
-        <button type="button" aria-label="кнопка добавления" class="profile__add-button"></button>       
-      </section>
+        <header class="header">
+            <img src="images/vector.svg" alt="Место Россия" class="header__logo">
+        </header>
+
+        <main class="main">
+            <section class="profile">
+                <img src="images/image.jpg" alt="Фото Жак-Ив Кусто" class="profile__foto">
+                <div class="profile-info">
+                    <div class="forma">
+                        <h1 class="forma__name">Жак-Ив Кусто</h1>
+                        <p class="forma__profession">Исследователь океана</p>
+                    </div>
+                    <button type="button" aria-label="кнопка редактирования" class="profile-info__edit-button"></button>
+                </div>
+                <button type="button" aria-label="кнопка добавления" class="profile__add-button"></button>
+            </section>
 
 
-      <section class="elements">
-        <template id="element-template">
+            <section class="elements">
+                <template id="element-template">
           <article class="element">
             <img src="#" alt="#" class="element__img">
             <button type="button" class="element__button-delete"></button>
@@ -42,48 +44,50 @@
             </div>
           </article>
         </template>
-      </section>
+            </section>
 
-    </main>
+        </main>
 
-    <footer class="footer">
-      <p class="footer__text">&copy; 2021 Mesto Russia</p>
-    </footer>
- 
-    <div class="popup" id="popupProfile">
-      <div class="popup__container">
-        <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
-        <h2 class="edit-profile">Редактировать профиль</h2>
-        <form class="popup__forma" action="#" name="forma" id="formaProfile">
-          <input name="name" type="text" placeholder="Имя" class="popup__input" required="">
-          <input name="job" type="text"  placeholder="Род деятельности" class="popup__input" required="">
-          <button class="submit-button" type="submit" aria-label="Сохранить профиль" name="submit-button">Сохранить</button>
-        </form>
-      </div>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2021 Mesto Russia</p>
+        </footer>
+
+        <div class="popup" id="popupProfile">
+            <div class="popup__container">
+                <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+                <h2 class="edit-profile">Редактировать профиль</h2>
+                <form class="popup__form" action="#" name="popup__form" id="popupProfileForm">
+                    <input name="name" type="text" placeholder="Имя" class="popup__input" required>
+                    <input name="job" type="text" placeholder="Род деятельности" class="popup__input" required>
+                    <button class="submit-button" type="submit" aria-label="Сохранить профиль" name="submit-button">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup" id="popupCard">
+            <div class="popup__container">
+                <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+                <h2 class="edit-profile">Новое место</h2>
+                <form class="popup__form" action="#" name="popupCardForm" id="popupCardForm">
+                    <input name="nameCard" type="text" placeholder="Название" class="popup__input" required>
+                    <input name="linkCard" type="text" placeholder="Ссылка на картинку" class="popup__input" required>
+                    <button class="submit-button" type="submit" aria-label="Сохранить карточку" name="submit-button">Создать</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup popup_picture" id="popupPicture">
+            <figure class="popup__figure">
+                <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+                <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Увеличенная картинка" class="popup__image">
+                <figcaption class="popup__caption">Увеличенная картинка</figcaption>
+            </figure>
+        </div>
+
+
     </div>
-
-    <div class="popup" id="popupCard">
-      <div class="popup__container">
-        <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
-        <h2 class="edit-profile">Новое место</h2>
-        <form class="popup__forma" action="#" name="forma" id="formaCard">
-          <input name="nameCard" type="text" placeholder="Название" class="popup__input" required="">
-          <input name="linkCard" type="text"  placeholder="Ссылка на картинку" class="popup__input" required="">
-          <button class="submit-button" type="submit" aria-label="Сохранить карточку" name="submit-button">Создать</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="popup popup_picture" id="popupPicture">
-      <figure class="popup__figure">
-        <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
-        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Увеличенная картинка" class="popup__image">
-        <figcaption class="popup__caption">Увеличенная картинка</figcaption>
-      </figure>
-    </div>
-    
-
-  </div>
-  <script src="pages/index.js"></script>
+    <script src="scripts/initial-сards.js"></script>
+    <script src="pages/index.js"></script>
 </body>
+
 </html>
