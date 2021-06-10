@@ -25,17 +25,12 @@ const formElementPicture = popupPicture.querySelector('.popup__figure');
 const popupImage = popupPicture.querySelector('.popup__image');
 const popupCaption = popupPicture.querySelector('.popup__caption');
 const closeIconPicture = popupPicture.querySelector('.close-icon');
-const popup = "";
-
-function closePopup(popup) { // обработчик закрытия попапа
-    popup.classList.toggle('popup_opened');
-}
 
 function addPopup(popup) { // обработчик открытия попапа
     popup.classList.add('popup_opened'); //добавляем к popup класс popup_opened
 }
 
-function removePopup(popup) { // обработчик закрытия попапа по крестику
+function removePopup(popup) { // обработчик закрытия попапа 
     popup.classList.remove('popup_opened');
 }
 
@@ -43,7 +38,7 @@ function formSubmitHandler(evt) { // обработчик закрытия ре�
     evt.preventDefault();
     firstName.textContent = nameInput.value;
     profession.textContent = jobInput.value;
-    closePopup(popupProfile);
+    removePopup(popupProfile);
 }
 
 
@@ -55,7 +50,7 @@ function formSubmitCard(evt) { // обработчик закрытия реда
     }
     const newCard = createNewCard(card);
     renderCard(newCard);
-    closePopup(popupCard);
+    removePopup(popupCard);
 }
 
 
