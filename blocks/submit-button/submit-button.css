@@ -15,7 +15,6 @@
     cursor: pointer;
     border: none;
     box-sizing: border-box;
-    border-radius: 2px;
 }
 
 .submit-button:hover {
