@@ -57,8 +57,10 @@
                 <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
                 <h2 class="edit-profile">Редактировать профиль</h2>
                 <form class="popup__form" action="#" name="popup__form" id="popupProfileForm">
-                    <input name="name" type="text" placeholder="Имя" class="popup__input" required>
-                    <input name="job" type="text" placeholder="Род деятельности" class="popup__input" required>
+                    <input id="name" type="text" placeholder="Имя" class="popup__input" required="" minlength="2" maxlength="40">
+                    <span class="popup__input-error name-placeholder"></span>
+                    <input id="job" type="text" placeholder="О себе" class="popup__input" required="" minlength="2" maxlength="200">
+                    <span class="popup__input-error job-placeholder"></span>
                     <button class="submit-button" type="submit" aria-label="Сохранить профиль" name="submit-button">Сохранить</button>
                 </form>
             </div>
@@ -69,9 +71,11 @@
                 <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
                 <h2 class="edit-profile">Новое место</h2>
                 <form class="popup__form" action="#" name="popupCardForm" id="popupCardForm">
-                    <input name="nameCard" type="text" placeholder="Название" class="popup__input" required>
-                    <input name="linkCard" type="text" placeholder="Ссылка на картинку" class="popup__input" required>
-                    <button class="submit-button" type="submit" aria-label="Сохранить карточку" name="submit-button">Создать</button>
+                    <input id="nameCard" type="text" placeholder="Название" class="popup__input" required="" minlength="2" maxlength="30">
+                    <span class="popup__input-error nameCard-placeholder"></span>
+                    <input id="linkCard" type="url" placeholder="Ссылка на картинку" class="popup__input" required="">
+                    <span class="popup__input-error linkCard-placeholder"></span>
+                    <button class="submit-button" type="submit" aria-label="Сохранить карточку" name="submit-button" id="submit-buttonCard">Создать</button>
                 </form>
             </div>
         </div>
@@ -87,7 +91,9 @@
 
     </div>
     <script src="scripts/initial-сards.js"></script>
+    <script src="scripts/validate.js"></script>
     <script src="pages/index.js"></script>
+
 </body>
 
 </html>

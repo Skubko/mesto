@@ -1,14 +1,13 @@
 .popup__form {
-    
-   margin: 24px 0px 0px 0px;
-   display: flex;
-   flex-direction: column;
-   position: relative;
+    margin: 24px 0px 0px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 @media screen and (max-width: 879px) {
-
-   .popup__form {
-    margin: 45px 0px 0px 0px;
-   }
-} 
+    .popup__form {
+        margin: 45px 0px 0px 0px;
+    }
+}
