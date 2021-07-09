@@ -1,32 +1,16 @@
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 
-const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+
 // ----------------------------------------------------------------------------------------------------//
+
+export const settings = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.submit-button', //(popup__button)
+    inactiveButtonClass: 'submit-button_disabled', //(popup__button_disabled)
+    inputErrorClass: 'popup__input_type_error'
+};
+
 const firstName = document.querySelector('.forma__name');
 const profession = document.querySelector('.forma__profession');
 const editButton = document.querySelector('.profile-info__edit-button');
@@ -55,18 +39,13 @@ const formElementPicture = popupPicture.querySelector('.popup__figure');
 export const popupImage = popupPicture.querySelector('.popup__image');
 export const popupCaption = popupPicture.querySelector('.popup__caption');
 const closeIconPicture = popupPicture.querySelector('.close-icon');
-
-
-export const config = {
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.submit-button', //(popup__button)
-    inactiveButtonClass: 'submit-button_disabled', //(popup__button_disabled)
-    inputErrorClass: 'popup__input_type_error'
+export const characteristics = {
+    Name: '',
+    Link: ''
 };
 
-
 function keyEscapeHandler(evt) { // обработчик закрытия  по "Escape"
-    if (evt.key === "Escape" || !evt.target === formElementProfile) {
+    if (evt.key === "Escape") {
         const popupActiv = document.querySelector(".popup_opened");
         popupActiv.classList.remove("popup_opened");
     }
@@ -85,6 +64,7 @@ export function addPopup(popup) { // обработчик открытия по�
 
 };
 
+
 function removePopup(popup) { // обработчик закрытия попапа 
     popup.classList.remove('popup_opened');
     document.removeEventListener("keyup", keyEscapeHandler); // удаляем слушатель на клавиатуру для закрытия по "Escape"
@@ -100,38 +80,52 @@ function formSubmitHandler(evt) { // обработчик закрытия ре�
 
 function formSubmitCard(evt) { // обработчик закрытия редактора карточки
     evt.preventDefault();
-    const cardStandart = new Card(nameCard.value, linkCard.value, '#element-template');
-    const cardElement = cardStandart.generateCard();
-    elements.prepend(cardElement); //  добавление карточки на страницу
+    characteristics.Name = nameCard.value;
+    characteristics.Link = linkCard.value;
+    renderCard();
     removePopup(popupCard);
 };
 
-function popupEditProfileOpened() { // открытие попапа редактирования профайла
+function openPopupEditProfile() { // открытие попапа редактирования профайла
     addPopup(popupProfile); //добавляем к popup класс popup_opened
     nameInput.value = firstName.textContent;
     jobInput.value = profession.textContent;
-    const popupProfileFormValidator = new FormValidator(config, '#popupProfileForm');
+    const popupProfileFormValidator = new FormValidator(settings, '#popupProfileForm');
     popupProfileFormValidator.enableValidation();
+    /*Если один раз при старте программы создать экземпляры класса FormValidator для каждой формы (здесь и строка 109-110 ) и 
+    вызывать у них enableValidation, то карточки не прорисовываются и слушатели редактирования форм не срабатывают   */
 };
 
-function popupAddCardOpened() { // открытие попапа редактирования карточки с новой картинкой
+export function disableSubmitButton() {
+    submitButtonCard.classList.add('submit-button_disabled');
+    submitButtonCard.setAttribute('disabled', true);
+};
+
+function openPopupAddCard() { // открытие попапа редактирования карточки с новой картинкой
     addPopup(popupCard); //добавляем к popup класс popup_opened
     nameCard.value = ''; //очищаем поля для новой карточки
     linkCard.value = '';
-    submitButtonCard.classList.add('submit-button_disabled');
-    submitButtonCard.setAttribute('disabled', true);
-    const popupCardFormFormValidator = new FormValidator(config, '#popupCardForm');
+    disableSubmitButton();
+    const popupCardFormFormValidator = new FormValidator(settings, '#popupCardForm');
     popupCardFormFormValidator.enableValidation();
 };
 
-initialCards.forEach((elem) => { //Отрисовка  стандартных карточек
-    const cardStandart = new Card(elem.name, elem.link, '#element-template');
+function renderCard() {
+    const cardStandart = new Card(characteristics, '#element-template');
     const cardElement = cardStandart.generateCard();
     elements.prepend(cardElement); //  добавление карточки на страницу
+};
+
+
+
+initialCards.forEach((elem) => { //Отрисовка  стандартных карточек
+    characteristics.Name = elem.name;
+    characteristics.Link = elem.link;
+    renderCard();
 });
 
-editButton.addEventListener('click', popupEditProfileOpened); //   вешаем слушатель на кнопку редактирования профайла
-addButton.addEventListener('click', popupAddCardOpened); //   вешаем слушатель на кнопку добавления новой карточки
+editButton.addEventListener('click', openPopupEditProfile); //   вешаем слушатель на кнопку редактирования профайла
+addButton.addEventListener('click', openPopupAddCard); //   вешаем слушатель на кнопку добавления новой карточки
 closeIconProfile.addEventListener('click', () => removePopup(popupProfile)); //   вешаем слушатель на крестик закрытия попапа профайла
 closeIconCard.addEventListener('click', () => removePopup(popupCard)); //   вешаем слушатель на крестик закрытия попапа новой карточки
 closeIconPicture.addEventListener('click', () => removePopup(popupPicture)); //   вешаем слушатель на крестик закрытия попапа картинки на весь экран

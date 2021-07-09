@@ -1,10 +1,10 @@
-import { addPopup, popupPicture, popupImage, popupCaption } from "./index.js";
+import { addPopup, popupPicture, popupImage, popupCaption, characteristics } from "./index.js";
 
 export default class Card {
-    constructor(dataName, dataLink, cardSelector) {
-        this.name = dataName;
-        this.link = dataLink;
-        this.alt = dataName;
+    constructor(characteristics, cardSelector) {
+        this.name = characteristics.Name;
+        this.link = characteristics.Link;
+        this.alt = characteristics.Name;
         this._cardSelector = cardSelector;
     }
 
@@ -12,7 +12,7 @@ export default class Card {
         this._element = this._getTemplate();
         this._element.querySelector('.element__img').src = this.link;
         this._element.querySelector('.element__name').textContent = this.name;
-        this._element.alt = this.name;
+        this._element.querySelector('.element__img').alt = this.alt;
         this._setEventListeners();
 
         return this._element;
@@ -38,7 +38,7 @@ export default class Card {
         });
 
         this._element.querySelector('.element__img').addEventListener('click', () => { //Выбираем картинку и сразу вешаем слушатель
-            this._popupPictureOpen(this.name, this.link);
+            this._openPopupPicture(this.name, this.link);
         });
     }
 
@@ -47,9 +47,9 @@ export default class Card {
     }
 
     _handleDeleteCard() { //Функция удаления карточки
-        this._element.closest('.element').remove();
+        this._element.remove();
     }
-    _popupPictureOpen(name, link) { //Открываем попап с картинкой на весь экран
+    _openPopupPicture(name, link) { //Открываем попап с картинкой на весь экран
         addPopup(popupPicture); //добавляем к popup класс popup_opened
         popupImage.src = link;
         popupImage.alt = name;

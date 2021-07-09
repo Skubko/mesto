@@ -1,11 +1,12 @@
-import { config } from "./index.js"
+import { settings, disableSubmitButton } from "./index.js";
+
 export default class FormValidator {
-    constructor(config, formSelector) {
+    constructor(settings, formSelector) {
         this._form = document.querySelector(formSelector);
-        this._inputList = this._form.querySelectorAll(config.inputSelector);
-        this._submitButton = this._form.querySelector(config.submitButtonSelector);
-        this._inactiveButtonClass = config.inactiveButtonClass;
-        this._inputErrorClass = config.inputErrorClass
+        this._inputList = this._form.querySelectorAll(settings.inputSelector);
+        this._submitButton = this._form.querySelector(settings.submitButtonSelector);
+        this._inactiveButtonClass = settings.inactiveButtonClass;
+        this._inputErrorClass = settings.inputErrorClass
     }
 
     enableValidation() { //Включение валидации
@@ -43,8 +44,7 @@ export default class FormValidator {
 
     _toggleButtonState() {
         if (this._hasInvalidInput()) {
-            this._submitButton.classList.add(this._inactiveButtonClass);
-            this._submitButton.setAttribute('disabled', true);
+            disableSubmitButton();
         } else {
             this._submitButton.classList.remove(this._inactiveButtonClass);
             this._submitButton.removeAttribute('disabled');
