@@ -2,9 +2,9 @@ import { addPopup, popupPicture, popupImage, popupCaption, characteristics } fro
 
 export default class Card {
     constructor(characteristics, cardSelector) {
-        this.name = characteristics.Name;
-        this.link = characteristics.Link;
-        this.alt = characteristics.Name;
+        this.name = characteristics.name;
+        this.link = characteristics.link;
+        this.alt = characteristics.name;
         this._cardSelector = cardSelector;
     }
 
@@ -49,6 +49,7 @@ export default class Card {
     _handleDeleteCard() { //Функция удаления карточки
         this._element.remove();
     }
+
     _openPopupPicture(name, link) { //Открываем попап с картинкой на весь экран
         addPopup(popupPicture); //добавляем к popup класс popup_opened
         popupImage.src = link;

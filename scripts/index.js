@@ -1,6 +1,6 @@
-import Card from './Card.js'
-import FormValidator from './FormValidator.js'
-
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+import initialCards from './initialCards.js';
 
 // ----------------------------------------------------------------------------------------------------//
 
@@ -40,8 +40,8 @@ export const popupImage = popupPicture.querySelector('.popup__image');
 export const popupCaption = popupPicture.querySelector('.popup__caption');
 const closeIconPicture = popupPicture.querySelector('.close-icon');
 export const characteristics = {
-    Name: '',
-    Link: ''
+    name: '',
+    link: ''
 };
 
 function keyEscapeHandler(evt) { // обработчик закрытия  по "Escape"
@@ -80,9 +80,11 @@ function formSubmitHandler(evt) { // обработчик закрытия ре�
 
 function formSubmitCard(evt) { // обработчик закрытия редактора карточки
     evt.preventDefault();
-    characteristics.Name = nameCard.value;
-    characteristics.Link = linkCard.value;
-    renderCard();
+
+
+    characteristics.name = nameCard.value;
+    characteristics.link = linkCard.value;
+    renderCard(characteristics);
     removePopup(popupCard);
 };
 
@@ -90,39 +92,32 @@ function openPopupEditProfile() { // открытие попапа редакт�
     addPopup(popupProfile); //добавляем к popup класс popup_opened
     nameInput.value = firstName.textContent;
     jobInput.value = profession.textContent;
-    const popupProfileFormValidator = new FormValidator(settings, '#popupProfileForm');
-    popupProfileFormValidator.enableValidation();
-    /*Если один раз при старте программы создать экземпляры класса FormValidator для каждой формы (здесь и строка 109-110 ) и 
-    вызывать у них enableValidation, то карточки не прорисовываются и слушатели редактирования форм не срабатывают   */
-};
-
-export function disableSubmitButton() {
-    submitButtonCard.classList.add('submit-button_disabled');
-    submitButtonCard.setAttribute('disabled', true);
+    popupProfileFormValidator.disableSubmitButton();
 };
 
 function openPopupAddCard() { // открытие попапа редактирования карточки с новой картинкой
     addPopup(popupCard); //добавляем к popup класс popup_opened
     nameCard.value = ''; //очищаем поля для новой карточки
     linkCard.value = '';
-    disableSubmitButton();
-    const popupCardFormFormValidator = new FormValidator(settings, '#popupCardForm');
-    popupCardFormFormValidator.enableValidation();
+    popupCardFormFormValidator.disableSubmitButton();
 };
 
-function renderCard() {
+function renderCard(elem) {
+    characteristics.name = elem.name;
+    characteristics.link = elem.link;
     const cardStandart = new Card(characteristics, '#element-template');
     const cardElement = cardStandart.generateCard();
     elements.prepend(cardElement); //  добавление карточки на страницу
 };
 
-
-
 initialCards.forEach((elem) => { //Отрисовка  стандартных карточек
-    characteristics.Name = elem.name;
-    characteristics.Link = elem.link;
-    renderCard();
+    renderCard(elem);
 });
+
+const popupProfileFormValidator = new FormValidator(settings, '#popupProfileForm');
+popupProfileFormValidator.enableValidation();
+const popupCardFormFormValidator = new FormValidator(settings, '#popupCardForm');
+popupCardFormFormValidator.enableValidation();
 
 editButton.addEventListener('click', openPopupEditProfile); //   вешаем слушатель на кнопку редактирования профайла
 addButton.addEventListener('click', openPopupAddCard); //   вешаем слушатель на кнопку добавления новой карточки

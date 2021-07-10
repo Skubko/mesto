@@ -1,4 +1,4 @@
-import { settings, disableSubmitButton } from "./index.js";
+import { settings } from "./index.js";
 
 export default class FormValidator {
     constructor(settings, formSelector) {
@@ -44,7 +44,7 @@ export default class FormValidator {
 
     _toggleButtonState() {
         if (this._hasInvalidInput()) {
-            disableSubmitButton();
+            this.disableSubmitButton();
         } else {
             this._submitButton.classList.remove(this._inactiveButtonClass);
             this._submitButton.removeAttribute('disabled');
@@ -55,5 +55,9 @@ export default class FormValidator {
         return Array.from(this._inputList).some((inputElement) => { // проходим по этому массиву методом some
             return !inputElement.validity.valid; // Если поле не валидно, колбэк вернёт true , // Обход массива прекратится и вся фунцкция // hasInvalidInput вернёт true
         })
+    }
+    disableSubmitButton() {
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.setAttribute('disabled', true);
     }
 }
