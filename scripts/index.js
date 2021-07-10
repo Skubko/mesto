@@ -102,9 +102,7 @@ function openPopupAddCard() { // открытие попапа редактир�
 };
 
 function renderCard(elem) {
-    characteristics.name = elem.name;
-    characteristics.link = elem.link;
-    const cardStandart = new Card(characteristics, '#element-template');
+    const cardStandart = new Card(elem, '#element-template');
     const cardElement = cardStandart.generateCard();
     elements.prepend(cardElement); //  добавление карточки на страницу
 };
