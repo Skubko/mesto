@@ -61,7 +61,6 @@ export function addPopup(popup) { // обработчик открытия по�
     popup.classList.add('popup_opened'); //добавляем к popup класс popup_opened
     document.addEventListener("keyup", keyEscapeHandler); // вешаем слушатель на клавиатуру для закрытия по "Escape"
     popup.addEventListener("click", popupOverlayHandler); // вешаем слушатель на область вокруг попапа для закрытия по клику
-
 };
 
 
@@ -80,11 +79,11 @@ function formSubmitHandler(evt) { // обработчик закрытия ре�
 
 function formSubmitCard(evt) { // обработчик закрытия редактора карточки
     evt.preventDefault();
-
-
-    characteristics.name = nameCard.value;
-    characteristics.link = linkCard.value;
-    renderCard(characteristics);
+    const elem = {
+        name: nameCard.value,
+        link: linkCard.value
+    };
+    renderCard(elem);
     removePopup(popupCard);
 };
 
