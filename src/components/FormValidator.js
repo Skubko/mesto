@@ -1,4 +1,4 @@
-import { settings } from "./index.js";
+import { settings } from "../pages/index.js";
 
 export default class FormValidator {
     constructor(settings, formSelector) {
@@ -59,5 +59,10 @@ export default class FormValidator {
     disableSubmitButton() {
         this._submitButton.classList.add(this._inactiveButtonClass);
         this._submitButton.setAttribute('disabled', true);
+    }
+    resetValidation() {
+        this._inputList.forEach((inputElement) => {
+            this._hideInputError(inputElement)
+        });
     }
 }
