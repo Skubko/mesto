@@ -1,10 +1,8 @@
-import { characteristics } from "../pages/index.js"
-
 export default class Card {
-    constructor(characteristics, cardSelector, handleCardClick) {
-        this.name = characteristics.name;
-        this.link = characteristics.link;
-        this.alt = characteristics.name;
+    constructor(cardData, cardSelector, handleCardClick) {
+        this.name = cardData.name;
+        this.link = cardData.link;
+        this.alt = cardData.name;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
 
@@ -12,9 +10,10 @@ export default class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._element.querySelector('.element__img').src = this.link;
+        this._elementImg = this._element.querySelector('.element__img');
+        this._elementImg.src = this.link;
+        this._elementImg.alt = this.alt;
         this._element.querySelector('.element__name').textContent = this.name;
-        this._element.querySelector('.element__img').alt = this.alt;
         this._setEventListeners();
         return this._element;
     }
@@ -30,7 +29,8 @@ export default class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__heart').addEventListener('click', () => { //Выбираем кнопку сердечко и сразу вешаем слушатель
+        this._elementHeart = this._element.querySelector('.element__heart');
+        this._elementHeart.addEventListener('click', () => { //Выбираем кнопку сердечко и сразу вешаем слушатель
             this._handleLikeCard();
         });
 
@@ -44,12 +44,11 @@ export default class Card {
     }
 
     _handleLikeCard() { //Функция лайка карточки
-        this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
+        this._elementHeart.classList.toggle('element__heart_active');
     }
 
     _handleDeleteCard() { //Функция удаления карточки
         this._element.remove();
     }
-
 
 }

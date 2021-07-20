@@ -1,5 +1,3 @@
-import { settings } from "../pages/index.js";
-
 export default class FormValidator {
     constructor(settings, formSelector) {
         this._form = document.querySelector(formSelector);

@@ -1,12 +1,11 @@
-import './index.css'; // добавьте импорт главного файла стилей
-
+import './index.css'; // добавьте импорт главного файла стилей 
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import initialCards from '../components/initialCards.js';
+import initialCards from '../utils/initialCards.js';
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
+import UserInfo from "../components/UserInfo.js"
 
 export const settings = {
     inputSelector: '.popup__input',
@@ -22,14 +21,14 @@ const popupProfile = document.querySelector('#popupProfile');
 const nameInput = popupProfile.querySelector('#name');
 const jobInput = popupProfile.querySelector('#job');
 
+const elementTemplate = '#element-template';
+
 const popupCard = document.querySelector('#popupCard');
 const nameCard = popupCard.querySelector('#nameCard');
 const linkCard = popupCard.querySelector('#linkCard');
 
 export const popupPicture = document.querySelector('#popupPicture');
-export const popupImage = popupPicture.querySelector('.popup__image');
 export const popupCaption = popupPicture.querySelector('.popup__caption');
-export const characteristics = { name: '', link: '' };
 
 
 const cardSection = new Section( //Создаем экземпляр класса Section для секции с карточками
@@ -37,9 +36,14 @@ const cardSection = new Section( //Создаем экземпляр класс�
 cardSection.renderItems();
 
 function renderCard(elem) {
-    const cardStandart = new Card(elem, '#element-template', handleCardClick);
+    const Element = createCard(elem);
+    cardSection.addItem(Element); //  добавление карточки на страницу
+};
+
+function createCard(elem) {
+    const cardStandart = new Card(elem, elementTemplate, handleCardClick);
     const cardElement = cardStandart.generateCard();
-    cardSection.addItem(cardElement); //  добавление карточки на страницу
+    return cardElement;
 };
 
 function handleCardClick(Name, Link) {
@@ -47,26 +51,26 @@ function handleCardClick(Name, Link) {
         name: Name,
         link: Link
     };
-    imagePopup.open(elem);
+    popupImage.open(elem);
 };
 
-const imagePopup = new PopupWithImage('#popupPicture'); //Экземпляр попапа картинки карточки
-imagePopup.setEventListeners();
+const popupImage = new PopupWithImage('#popupPicture'); //Экземпляр попапа картинки карточки
+popupImage.setEventListeners();
 
-const addCardPop = new PopupWithForm('#popupCard', (formValues) => { //Экземпляр попапа добавления карточки
+const popupAddCard = new PopupWithForm('#popupCard', (formValues) => { //Экземпляр попапа добавления карточки
     submitAddCardForm(formValues);
 });
-addCardPop.setEventListeners();
+popupAddCard.setEventListeners();
 
-const editProfilePop = new PopupWithForm('#popupProfile', (formValues) => submitProfileForm(formValues));
+const popupEditProfile = new PopupWithForm('#popupProfile', (formValues) => submitProfileForm(formValues));
 //Экземпляр попапа профиля
-editProfilePop.setEventListeners();
+popupEditProfile.setEventListeners();
 
 const userInfo = new UserInfo('.forma__name', '.forma__profession'); //Экземпляр инфо пользователя из профайла
 
 function submitProfileForm(formValues) { //Функция сохранения профиля
     userInfo.setUserInfo(formValues);
-    editProfilePop.close();
+    popupEditProfile.close();
 };
 
 function submitAddCardForm(formValues) { //Функция сохранения карточки
@@ -76,7 +80,7 @@ function submitAddCardForm(formValues) { //Функция сохранения �
         alt: formValues.nameCard //Alt для новых карточек берём из названия фото
     };
     renderCard(elem);
-    addCardPop.close();
+    popupAddCard.close();
     popupCardFormFormValidator.resetValidation();
 };
 
@@ -85,15 +89,17 @@ function openPopupEditProfile() { // открытие попапа редакт�
     nameInput.value = userInfoData.userName;
     jobInput.value = userInfoData.userJob;
     popupProfileFormValidator.disableSubmitButton();
-    editProfilePop.open() //добавляем к popup класс popup_opened
+    popupProfileFormValidator.resetValidation();
+    popupEditProfile.open() //добавляем к popup класс popup_opened
 };
 
 
 function openPopupAddCard() { // открытие попапа редактирования карточки с новой картинкой
-    addCardPop.open(); //добавляем к popup класс popup_opened
+    popupAddCard.open(); //добавляем к popup класс popup_opened
     nameCard.value = ''; //очищаем поля для новой карточки
     linkCard.value = '';
     popupCardFormFormValidator.disableSubmitButton();
+    popupCardFormFormValidator.resetValidation();
 };
 
 const popupProfileFormValidator = new FormValidator(settings, '#popupProfileForm');
