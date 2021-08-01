@@ -1,0 +1,12 @@
+.element__likeChecker {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+}

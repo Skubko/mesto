@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -7,6 +7,8 @@
     <meta name="description" content="Яндекс Практикум">
     <meta name="keywords" content="Mesto">
     <meta name="author" content="Андрей Скубко">
+    <!--  <link rel="stylesheet" href="pages/index.css">
+     //--------------исправить,   удалить строку    -->
     <title>Место</title>
 </head>
 <!--                         -->
@@ -16,15 +18,17 @@
 
         <header class="header">
             <img src="<%=require('./images/vector.svg')%>" alt="Место Россия" class="header__logo">
+            <!--  <img src='images/vector.svg' alt="Место Россия" class="header__logo">     исправить !!!!!  -->
         </header>
 
         <main class="main">
             <section class="profile">
                 <img src="<%=require('./images/image.jpg')%>" alt="Фото Жак-Ив Кусто" class="profile__foto">
+                <!--  <img src='images/image.jpg' alt="Фото пользователя" class="profile__foto"> исправить !!!!!  -->
                 <div class="profile-info">
                     <div class="forma">
-                        <h1 class="forma__name">Жак-Ив Кусто</h1>
-                        <p class="forma__profession">Исследователь океана</p>
+                        <h1 class="forma__name">Загрузка данных с сервера...</h1>
+                        <p class="forma__profession"></p>
                     </div>
                     <button type="button" aria-label="кнопка редактирования" class="profile-info__edit-button"></button>
                 </div>
@@ -39,7 +43,12 @@
             <button type="button" class="element__button-delete"></button>
             <div class="element__text">
               <h2 class="element__name"></h2>
-              <button type="button" aria-label="сердце" class="element__heart"></button>
+              <div class="element__heart-namber">
+                  <button type="button" aria-label="сердце" class="element__heart"></button>
+                  <div class="element__likeChecker">5</div>
+
+                </div>
+
             </div>
           </article>
         </template>
@@ -60,7 +69,7 @@
                     <span class="popup__input-error name-placeholder"></span>
                     <input id="job" type="text" placeholder="О себе" class="popup__input" required="" minlength="2" maxlength="200">
                     <span class="popup__input-error job-placeholder"></span>
-                    <button class="submit-button" type="submit" aria-label="Сохранить профиль" name="submit-button">Сохранить</button>
+                    <button class="submit-button" type="submit" aria-label="Сохранить профиль" name="submit-button" id="submit-buttonCard">Сохранить</button>
                 </form>
             </div>
         </div>
@@ -87,9 +96,31 @@
             </figure>
         </div>
 
+        <div class="popup" id="popupDeleteCard">
+            <div class="popup__container">
+                <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+                <h2 class="edit-profile">Вы уверены?</h2>
+                <form class="popup__form" action="#" name="popupDeleteCardForm" id="popupDeleteCardForm">
+                    <button class="submit-button" type="submit" aria-label="Удалить карточку" name="submit-button" id="submit-buttonCard">Удалить карточку</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup" id="popupAvatar">
+            <div class="popup__container">
+                <button type="button" aria-label="крестик для закрытия попапа" class="close-icon"></button>
+                <h2 class="edit-profile">Обновить аватар</h2>
+                <form class="popup__form" action="#" name="popupCardForm" id="popupAvatarForm">
+                    <input id="linkAvatar" type="url" placeholder="Ссылка на аватар" class="popup__input" required="">
+                    <span class="popup__input-error linkAvatar-placeholder"></span>
+                    <button class="submit-button" type="submit" aria-label="Сохранить аватар" name="submit-button" id="submit-buttonCard">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+
 
     </div>
-
-    </body>
+</body>
 
 </html>

@@ -22,6 +22,9 @@
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__heart/element__heart.css);
 @import url(../blocks/element/__button-delete/element__button-delete.css);
+@import url(../blocks/element/__likeChecker/element__likeChecker.css);
+@import url(../blocks/element/__hidden/element__hidden.css);
+@import url(../blocks/element/__heart-namber/element__heart-namber.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
