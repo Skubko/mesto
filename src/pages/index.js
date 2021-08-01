@@ -20,16 +20,16 @@ const addButton = document.querySelector('.profile__add-button');
 const profileFoto = document.querySelector('.profile__foto');
 
 const popupProfile = document.querySelector('#popupProfile');
-const popupProfileSubmit = popupProfile.querySelector('#submit-buttonCard');
+const popupProfileSubmit = popupProfile.querySelector('#submit-buttonProfile');
 const nameInput = popupProfile.querySelector('#name');
 const jobInput = popupProfile.querySelector('#job');
 
 const elementTemplate = '#element-template';
 
 const popupDelCard = document.querySelector('#popupDeleteCard');
-const popupDelCardSubmit = popupDelCard.querySelector('#submit-buttonCard');
+const popupDelCardSubmit = popupDelCard.querySelector('#submit-buttonDelCard');
 const popupAvatar = document.querySelector('#popupAvatar');
-const popupAvatarSubmit = popupAvatar.querySelector('#submit-buttonCard');
+const popupAvatarSubmit = popupAvatar.querySelector('#submit-buttonAvatar');
 const popupCard = document.querySelector('#popupCard');
 const popupCardSubmit = popupCard.querySelector('#submit-buttonCard');
 
