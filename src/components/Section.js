@@ -4,8 +4,8 @@ export default class Section {
         this._container = document.querySelector(containerSelector);
     }
 
-    renderItems(initialCards, user_id) {
-        initialCards.forEach(item => { this._renderer(item, user_id) }); //Отрисовка  стандартных карточек
+    renderItems(initialCards, userId) {
+        initialCards.forEach(item => { this._renderer(item, userId) }); //Отрисовка  стандартных карточек
     }
 
     addItem(element) {

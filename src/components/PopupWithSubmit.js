@@ -10,16 +10,14 @@ export default class PopupWithSubmit extends Popup {
         //на форму вешем слушатель сабмита, затем использем коллбэк 
         this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
-            this._handleSubmit(this._cardId);
+            this._handleSubmit(this._cardId, this.card);
         });
         super.setEventListeners();
     }
-    open(id) {
+    open(id, card) {
         this._cardId = id;
+        this.card = card;
         super.open();
     }
-    close() {
-        super.close();
-        this._form.reset();
-    }
+
 }

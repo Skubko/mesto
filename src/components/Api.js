@@ -5,24 +5,24 @@ export default class Api {
         this._headers = this._config.headers;
     }
 
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        // если ошибка, отклоняем промис
+        return Promise.reject(`Ошибка: ${res.status}`);
+    }
+
     //загружаем с сервера массив данных по карточкам
     getInitialCards() {
-            return fetch(`${this._url}/cards`, {
-                    method: "GET",
-                    headers: this._headers
-                })
-                .then(res => {
-                    if (res.ok) {
-                        return res.json();
-                    }
-                    // если ошибка, отклоняем промис
-                    return Promise.reject(`Ошибка: ${res.status}`);
-                })
-                .catch((err) => {
-                    console.log(err); // выведем ошибку в консоль
-                });
-        }
-        //-----------------------------------------------------------
+        return fetch(`${this._url}/cards`, {
+                method: "GET",
+                headers: this._headers
+            })
+            .then(this._checkResponse);
+    }
+
+    //-----------------------------------------------------------
 
     //загружаем с сервера массив данных по пользователю
     getUserInfo() {
@@ -30,16 +30,7 @@ export default class Api {
                 method: "GET",
                 headers: this._headers
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
+            .then(this._checkResponse);
     }
 
     recordProfile(name, about) {
@@ -51,16 +42,7 @@ export default class Api {
                     about: about
                 })
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
+            .then(this._checkResponse);
     }
 
     recordNewCard(name, link) {
@@ -72,33 +54,15 @@ export default class Api {
                     link: link
                 })
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
-
+            .then(this._checkResponse);
     }
+
     deleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
                 method: "DELETE",
                 headers: this._headers,
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
+            .then(this._checkResponse);
     }
 
     addLike(id) {
@@ -106,32 +70,15 @@ export default class Api {
                 method: "PUT",
                 headers: this._headers,
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
+            .then(this._checkResponse);
     }
+
     deleteLike(id) {
         return fetch(`${this._url}/cards/likes/${id}`, {
                 method: "DELETE",
                 headers: this._headers,
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
+            .then(this._checkResponse);
     }
 
     recordAvatar(src) {
@@ -142,15 +89,7 @@ export default class Api {
                     avatar: src.linkAvatar
                 })
             })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // если ошибка, отклоняем промис
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
+            .then(this._checkResponse);
     }
+
 };

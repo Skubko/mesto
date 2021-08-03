@@ -1,5 +1,5 @@
 export default class Card {
-    constructor(cardData, cardSelector, handleCardClick, user_id, handleDeleteCard, handleChangeLike) {
+    constructor(cardData, cardSelector, handleCardClick, userId, handleDeleteCard, handleChangeLike) {
         this.name = cardData.name;
         this.link = cardData.link;
         this.alt = cardData.name;
@@ -10,8 +10,10 @@ export default class Card {
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._handleDeleteCard = handleDeleteCard;
-        this._handleChangeLike = handleChangeLike;
-        this.user_id = user_id;
+        this.handleChangeLike = handleChangeLike;
+        this.userId = userId;
+        this.likeCheck = false;
+
     }
 
 
@@ -41,14 +43,14 @@ export default class Card {
             this._handleLikeCard();
         });
         for (let i = 0; i < this.likes.length; i++) {
-            if (this.likes[i]._id === this.user_id) {
+            if (this.likes[i]._id === this.userId) {
+                this.likeCheck = true;
                 this._elementHeart.classList.toggle('element__heart_active');
             };
         };
-        if (this.owner === this.user_id) {
+        if (this.owner === this.userId) {
             this._element.querySelector('.element__button-delete').addEventListener('click', () => { //Выбираем кнопку удалить карточку и сразу вешаем слушатель
-                this._deleteCard();
-                this._handleDeleteCard(this.id);
+                this._handleDeleteCard(this.id, this);
             });
         } else {
             this._element.querySelector('.element__button-delete').classList.add('element__hidden')
@@ -61,17 +63,16 @@ export default class Card {
 
     _handleLikeCard() { //Функция лайка карточки
         this._elementHeart.classList.toggle('element__heart_active');
-        let check = 0;
-        for (let i = 0; i < this.likes.length; i++) {
-            if (this.likes[i]._id === this.user_id) {
-                check = check + 1;
-            };
-        }; // проверяем ставили картинке раньше лайк или нет
-        this._handleChangeLike(this.id, check);
-        this._element.querySelector('.element__likeChecker').textContent = this.sumLikes - check;
+        this.handleChangeLike(this.id, this.likeCheck, this);
+        // в коллбэке handleChangeLike добавляем/удаляем лайк и возвращаем в sumLikes количество лайков данной карточки
     }
 
-    _deleteCard() { //Функция удаления карточки
+    deleteCard() { //Функция удаления карточки
         this._element.remove();
     }
+
+    updateLikes(res) {
+        this._element.querySelector('.element__likeChecker').textContent = res;
+    }
+
 }
