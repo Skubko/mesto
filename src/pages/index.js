@@ -119,9 +119,10 @@ function submitAvatarForm(src) { //Функция сохранения ават�
             initialUserInfo.avatar = src.linkAvatar;
             userInfo.setUserInfo(initialUserInfo); // записываем измененные данные аватара на экран
             popupAvatarSubmit.textContent = 'Сохранить';
+            popupEditAvatar.close();
         })
         .catch(err => console.log(err));
-    popupEditAvatar.close();
+
 };
 
 
@@ -158,8 +159,8 @@ popupAddCard.setEventListeners();
 
 function openPopupAddCard() { // открытие попапа редактирования карточки с новой картинкой
     popupAddCard.open(); //добавляем к popup класс popup_opened
-    nameCard.value = ''; //очищаем поля для новой карточки
-    linkCard.value = '';
+    //nameCard.value = ''; //очищаем поля для новой карточки
+    //linkCard.value = '';
     popupCardFormFormValidator.disableSubmitButton();
     popupCardFormFormValidator.resetValidation();
 };
